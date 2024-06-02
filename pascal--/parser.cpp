@@ -14,6 +14,7 @@ void Parser::program() {
     eat("SEMI");
     root.children.push_back(block());
     eat("END");
+
     if (current_token.type == "END_BLOCK")
         eat("END_BLOCK");
 }
@@ -165,11 +166,13 @@ Node Parser::if_statement() {
     return if_stmt_node;
 }
 
+
 Node Parser::write_statement() {
     Node write_stmt_node = { "write_statement", {} };
     eat("WRITE");
     eat("LPAREN");
-    vector<string> values;
+    //vector<string> values;
+    values.clear();
     while (current_token.type != "RPAREN") {
         if (current_token.type == "STRING") {
             values.push_back(current_token.value.substr(1, current_token.value.length() - 2));

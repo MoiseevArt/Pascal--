@@ -20,6 +20,7 @@ public:
     Parser(Lexer& lexer);
     void program();
     Node get_hierarchical_structure();
+    vector<string> values;
 
 private:
     Lexer& lexer;
